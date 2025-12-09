@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"> <!-- Modern sans-serif and monospace -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 50%, #a8edea 100%), url('joshua.png'); /* Light gradient with overlay */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #333; /* Dark text for light theme */
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Container for centering content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation Bar with sleek styling and icons */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-bottom: 2px solid #ff6b6b; /* Coral accent */
+        }
+        nav ul {
+            list-style: none;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 25px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        nav ul li a i {
+            margin-right: 8px;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #ff6b6b;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        nav ul li a:hover {
+            color: #ff6b6b;
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+        
+        /* Sections with subtle fade-in and background patterns */
+        section {
+            padding: 120px 20px 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+            position: relative;
+        }
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        section:nth-child(4) { animation-delay: 0.8s; }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Home Section with enhanced styling */
+        #home {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        #home::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-conic-gradient(from 0deg, rgba(255, 107, 107, 0.1) 0deg 90deg, rgba(255, 167, 38, 0.1) 90deg 180deg);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        #home .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 6px solid #ff6b6b;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        #home .profile-pic:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.7);
+        }
+        #home h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(255, 107, 107, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        #home p {
+            font-size: 1.5em;
+            max-width: 700px;
+            font-weight: 300;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+        #home a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        #home a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.6);
+        }
+        
+        /* About Me Section with icons and better layout */
+        #about {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #about .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #ffa726;
+            box-shadow: 0 6px 20px rgba(255, 167, 38, 0.5);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        #about .profile-pic:hover {
+            transform: scale(1.05);
+        }
+        #about h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #ff6b6b;
+        }
+        #about p {
+            font-size: 1.3em;
+            max-width: 700px;
+            font-weight: 300;
+            color: #555;
+            text-align: justify;
+        }
+        
+        /* Projects Section with enhanced cards */
+        #projects {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        #projects h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #ff6b6b;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+        }
+        .project {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #ff6b6b;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .project:hover::before {
+            left: 100%;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
+            border-color: #ffa726;
+        }
+        .project h3, .project h4 {
+            margin-top: 0;
+            font-weight: 600;
+            color: #333;
+        }
+        .project a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            align-self: flex-start;
+        }
+        .project a:hover {
+            color: #ffa726;
+        }
+        
+        /* Contacts Section with icons */
+        #contacts {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        #contacts h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #ff6b6b;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 1.3em;
+            font-weight: 400;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+        .contact-info p i {
+            margin-right: 10px;
+            color: #ff6b6b;
+        }
+        .contact-info a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            color: #ffa726;
+        }
+        
+        /* Footer with sleek styling and social links */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #555;
+            font-weight: 300;
+            border-top: 2px solid #ff6b6b;
+        }
+        footer .social-links {
+            margin-top: 20px;
+        }
+        footer .social-links a {
+            margin: 0 10px;
+            color: #ff6b6b;
+            font-size: 1.5em;
+            transition: color 0.3s, transform 0.3s;
+        }
+        footer .social-links a:hover {
+            color: #ffa726;
+            transform: scale(1.2);
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 15px 0;
+            }
+            section {
+                padding: 100px 15px 40px;
+            }
+            #home .profile-pic {
+                width: 140px;
+                height: 140px;
+            }
+            #about .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+            #home h1 {
+                font-size: 3em;
+            }
+            #about h1 {
+                font-size: 2.5em;
+            }
+            #projects h2, #contacts h2 {
+                font-size: 2em;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i>About Me</a></li>
+                <li><a href="#projects"><i class="fas fa-project-diagram"></i>Projects</a></li>
+                <li><a href="#contacts"><i class="fas fa-envelope"></i>Contacts</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="home">
+        <div class="container">
+            <img src="rylmallari.jfif" alt="Profile Picture" class="profile-pic">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Hi, I'm JOHN RYL MALLARI</p>
+            <p>BSIT-1f</p>
+            <a href="#about">Learn More</a>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <img src="ryl12.jfif" alt="Profile Picture" class="profile-pic">
+            <h1>About Me</h1>
+            <p>My Name is JOHN RYL MAllARI
+		   1st year college studying at
+		   Occidental Mindoro State College(OMSC).
+		   an IT student passionate about technology and problem-solving
+		   I enjoy learning new programming languages creating small project 
+		   and exploring IT tools and software.
+		    </p>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <h3>ACTIVITY 1: The Story in The Book</h3>
+                    <a href="file:///C:/Users/DELL/OneDrive/Desktop/CARLBOANG/PORTFOLIO%20RYL/ryl%20act%201.html">VIEW YOUR ACTIVITY</a>
+                </div>
+				
+                <div class="project">
+                    <h3>ACTIVITY 2: RECIPE</h3>
+                    <a href="file:///C:/Users/DELL/OneDrive/Desktop/CARLBOANG/PORTFOLIO%20RYL/Act%202%20ni%20ryl.html">VIEW YOUR ACTIVITY</a>
+                </div>
+				
+                <div class="project">
+                    <h3>ACTIVITY 3: MENU</h3>
+                    <a href="file:///C:/Users/DELL/OneDrive/Desktop/CARLBOANG/PORTFOLIO%20RYL/act%203.html">VIEW YOUR ACTIVITY</a>
+				 </div>
+				 <div class="project">
+                    <h3>JAVASCRIPT</h3>
+                    <a href="file:///C:/Users/DELL/OneDrive/Desktop/CARLBOANG/PORTFOLIO%20RYL/javascript.html">VIEW YOUR ACTIVITY</a>
+				 </div>
+				 
+				
+				 <div class="project">
+                    <h4>ACTIVITY 4: BIKE_ACT4</h4>
+                    <a href="file:///C:/Users/DELL/OneDrive/Desktop/CARLBOANG/PORTFOLIO%20RYL/act4.html">VIEW YOUR ACTIVITY</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contacts">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:mallarijohnryl@gmail.com">mallarijohnryl@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i>Contact #: <a href="tel:09759274540">09759274540</a></p>
+                <p><i class="fab fa-facebook"></i>Facebook: <a href="JOHN RYL MALLARI">JOHN RYL MALLARI</a></p>
